@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mapper>
+	<!-- 
+		id 값에다가 전달해줄 메서드를 지정해줌
+		예를 들어 getAllProducts 메서드에 전달해주고 싶으면
+		id 값에 getALlProducts를 넣어주면 됌
+	 -->
+	<select id ="" resultType="">
+		SELECT * FROM products
+	</select>
+</mapper>
