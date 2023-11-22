@@ -4,8 +4,7 @@
 	<!-- namespace: 매퍼 파일의 위치를 지정해줌 id값에다가 전달해줄 메서드를 지정해줌 예를 들어 getAllProducts 
 		메서드에 전달해주고 싶으면 id 값에 getAllProducts 넣어주면 됨 resultType 전달해줄 장소 model에 객체로 
 		매핑해서 반환하도록 설정한 것 -->
-	<select id="getAllProducts"
-		resultType="com.kh.springdb.model.Product">
+	<select id="getAllProducts" resultType="com.kh.springdb.model.Product">
 		SELECT * FROM products
 	</select>
 </mapper>

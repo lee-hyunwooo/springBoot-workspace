@@ -1,0 +1,12 @@
+스프링 프로잭트 생성
+
+mybatis OracleDriver DevTools Web Thymeleaf actuator
+
+application.properties db연결설정
+model- Board.java
+src/main/resources/mapper/BoardMapper.xml
+mapper-BoardMapper.java
+service - BoardService.java
+controller - BoardController.java
+templates - boardList.html
+SpringDBOracleApplication - @MapperScan 어노테이션 추가해서 경로 설정
