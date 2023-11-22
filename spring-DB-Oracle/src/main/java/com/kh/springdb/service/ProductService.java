@@ -10,10 +10,18 @@ import com.kh.springdb.model.Product;
 
 @Service
 public class ProductService {
+
+	/*
+	JPA 
 	@Autowired
-	private ProductMapper productMapper;
-	public List<Product> getAllProduct() {
-		return productMapper.getAllProducts();
-	}
-	
+	private ProductRepository productRepository;
+*/
+@Autowired
+private ProductMapper productMapper;
+
+public List<Product> getAllProducts(){
+	//return productRepository.findAll();
+	return productMapper.getAllProducts();
+}
+
 }
