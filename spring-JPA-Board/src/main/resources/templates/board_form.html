@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>게시물 추가하기</title>
+</head>
+<body>
+    <h2>Board Form</h2>
+    <form th:action="@{/boards/save}" th:object="${board}" method="post">
+        <input type="hidden" th:field="*{boardId}" />
+        <label>Title: </label>
+        <input type="text" th:field="*{title}" /><br/>
+        
+        <label>Content: </label>
+        <input type="text" th:field="*{content}" /><br/>
+        
+        <label>author: </label>
+        <input type="text" th:field="*{author}" /><br/>
+        <button type="submit">Save Board</button>
+    </form>
+    <a th:href="@{/boards}">돌아가기</a>
+</body>
+</html>

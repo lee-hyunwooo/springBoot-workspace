@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>게시물 수정하기</title>
+</head>
+<body>
+    <h2>Board Update Form</h2>
+    <form th:action="@{/boards/update/{boardId}}" th:object="${board}" method="post">
+        <input type="hidden" th:field="*{boardId}" />
+        <label>Title: </label>
+        <input type="text" th:field="*{title}" /><br/>
+        
+        <label>Content: </label>
+        <input type="text" th:field="*{content}" /><br/>
+        
+        <label>author: </label>
+        <input type="text" th:field="*{author}" /><br/>
+        <button type="submit">Save Board</button>
+       
+    </form>
+     <a th:href="@{/boards/details/{boardId}(boardId=${board.boardId})}">돌아가기</a>
+</body>
+</html>

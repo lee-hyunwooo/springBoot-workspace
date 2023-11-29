@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Board Detail</title>
+</head>
+<body>
+    <h2>Board Detail</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Content</th>
+            <th>author</th>
+        </tr>
+        <tr th:if="${board != null}">
+               <td th:text="${board.boardId}"></td>	
+               <td th:text="${board.title}"></td>
+               <td th:text="${board.content}"></td>
+               <td th:text="${board.author}"></td>
+               <td><a th:href="@{/boards/update/{boardId}(boardId=${board.boardId})}">수정하기</a></td>
+               <td><a th:href="@{/boards/delete/{boardId}(boardId=${board.boardId})}">삭제하기</a></td>
+        </tr>
+    </table>
+</body>
+</html>
