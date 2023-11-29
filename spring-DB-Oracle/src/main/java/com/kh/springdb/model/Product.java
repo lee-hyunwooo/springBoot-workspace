@@ -7,6 +7,7 @@ public class Product {
 	private String category;
 	private int price;
 	private int stock_quantity;
+	
 	public int getProduct_id() {
 		return product_id;
 	}
@@ -37,4 +38,6 @@ public class Product {
 	public void setStock_quantity(int stock_quantity) {
 		this.stock_quantity = stock_quantity;
 	}
+
+	
 }

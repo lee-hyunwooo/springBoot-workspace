@@ -1,0 +1,76 @@
+Annotation(어노테이션 = @)
+	사전적의미 : 주석
+		JDK5 등장했음 메타데이터라고 불림
+				   (메타데이터 : 데이터를 위한 데이터)
+	클래스나 메서드, 변수 등을 선언할 때 @붙여서 사용
+
+JPA
+	자바에서 관계형 데이터베이스와 상호작용을 위해 
+	기능을 따로 작성하지 않고 축소시켜서 사용하는 기술
+	장점
+		1. 특정 데이터 베이스에 지정되지 않음
+			예를 들어 오라클로 데이터베이스를 지정했으나 예외적인 상황으로 MariaDB로 변경한다면
+			데이터베이스마다 쿼리문이 다르기 때문에 전체 수정을 들어가야함
+			하지만 JPA는 추상화한 데이터 접근 계층을 제공 (application.properties)설정 파일에다가 어떤 데이터베이스를 사용하는지 알려주면
+			얼마든지 데이터베이스를 변경할 수 있음
+		2. 객체지향적 프로그래밍
+			JPA 데이터베이스 설계 중심으로 객체지향적으로 설계가 가능
+		3. 생산성 향상
+			데이터베이스 테이블에 새로운 컬럼이 추가되었을 경우에
+			해당 테이블의 컬럼을 사용하는 
+			DTO 클래스의 필드를 모두 변경해야했음
+	단점
+		1. 복잡한 쿼리를 처리하는데 어려움이 있음
+		2. 학습시간
+			세부적으로 미세하게 메모리 시간이 소요됨
+	
+ORM
+	Java와 DataBase에 있는 테이블과 변수들을 매핑해주는 역할을 함
+
+Lombok 라이브러리
+		반복적으로 사용하는 Getter/Setter, ToString과 같이 반복적인
+			자바 코드를 작성할 것을 자동으로 축소해서 
+			생성해주는 역할을 주로 해주는	라이브러리
+	@Getter/@Setter : 
+		public void getId(){}
+		public Int setId(){} 메소드로 작성했던 코드를 
+			@Getter / @Setter 작성으로 코드를 단축시켜주는 역할을 함
+	@NotNull : 해당 변수가 null인지 체크해주는 어노테이션을 제공
+	@EqualsAndHashCode : 객체가 동등한지 비교하는데 사용
+					      자동으로 equals()와 hashCode()
+					      	매서드를 생성해줌
+					      	
+	@RequiredArg-sConstructor : 필드 중 final이나 @NonNull
+					로 선언된 필드를 대상으로 생성자를 생성해줌
+					이 생성자는 필드를 초기화하는 목적으로 사용됨
+	@Data : @ToString, @EqualsAndHashCode, @Getter, @Setter
+			@RequiredArg-sConstructor를 합친 어노테이션
+			
+@Entity
+	데이터베이스의 테이블에 대응하는 클래스
+	@Entity가 붙은 클래스는 JPA에서 관리하는 것이고 한글로 엔티티라고 부름
+	데이터베이스에 item 테이블을 만들고, 이에 대응되는 Item.java만들어서
+	@Entity 어노테이션을 붙이면 어노테이션이 붙은 클래스가 엔티티가 되는 것
+	
+
+@Controller 와 @RestController
+@Controller 
+	어노테이션이 부착된 전통적인 SpringMVC 패턴을 적용한 것
+	View 를 생성하고 반환하는 역할을 하기도 함
+		@RequestMapping 과 함께 사용하고 HTTP 요청을 처리하고 
+			그 결과를 View 로 보냄
+	데이터를 반환할 때는 Model 객체를 통해 View 에 데이터를 전달
+	
+@RestController
+	조금 더 RESTful 웹 서비스를 제공하는데 특화된 어노테이션
+		@Controller에 @ResponseBody 을 함께 사용한 것과 유사하게 동작
+		이런 기능들을 편리하게 사용할 수 있도록 조금 더 특수하게 만들어진 어노테이션
+		
+		주로 @Controller View(html 파일)을 반환하는데 사용되고
+			@RestController는 @Controller에 @ResponseBody를 추가로 사용하는 것을
+			대체할 수 있어 코드가 조금 더 간결해짐
+		
+	@ResponseBody
+		메서드가 return 해서 반환해야하는 값을 HTTP 응답에서 html로 전달하는 것이 아닌
+		Java 코드에서 직접 본문으로 전달해서 사용할 수 있는 어노테이션
+

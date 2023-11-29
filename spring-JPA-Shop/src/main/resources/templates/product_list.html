@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Product List</title>
+</head>
+<body>
+    <h2>Product List</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Name</th>
+                <th>Stock Quantity</th>
+                <th>Detail(상세보기)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="product : ${products}">
+                <td th:text="${product.product_id}"></td>
+                <td th:text="${product.category}"></td>
+                <td th:text="${product.price}"></td>
+                <td th:text="${product.product_name}"></td>
+                <td th:text="${product.stock_quantity}"></td>
+                <td><a th:href="@{/products/details/{id}(id=${product.product_id})}">상세보기 클릭</a></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,4 +1,15 @@
-@Component 재사용이 가능한 각각의 독립된 조작장치
+@SpringBootApplication 
+	애플리케이션을 시작할 때 @SpringBootApplication 있는 클래스부터 설정을 읽어오고 자동으로 구성
+		@MapperScan
+			MyBatis 매퍼인터페이스를 찾아서  MyBatis와 연동하는데 사용
+			MYBatis Sql 매퍼 파일 이외도 데이터베이스와 연동할 수 있게 도와주는 것
+		@ComponentScan
+			스프링 컨테이너가 어디서 빈을 찾아야 하는지를 지정하는데 사용
+			예 ) @ComponentScan(BasePackages = "패키지(com....)"
+		
+		
+@Component 
+	재사용이 가능한 각각의 독립된 조작장치
 
 @Controller
 	컨트롤러에 해당되는 클래스를 웹 애플리케이션의 컨트롤러로 지정한다는 의미

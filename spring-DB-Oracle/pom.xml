@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.kh.springdb</groupId>
-	<artifactId>spring-project</artifactId>
+	<artifactId>spring-DB-Oracle</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring-DB-Oracle</name>
 	<description>Demo project for Spring Boot</description>
@@ -17,6 +17,7 @@
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
@@ -43,7 +44,8 @@
 		</dependency>
 		<dependency>
 			<groupId>com.oracle.database.jdbc</groupId>
-			<artifactId>ojdbc8</artifactId>
+			<artifactId>ojdbc11</artifactId>
+			<version>23.3.0.23.09</version>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
@@ -58,7 +60,6 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>

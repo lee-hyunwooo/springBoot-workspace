@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.springdb.mapper.BoardMapper">
+
+    <resultMap id="BoardResultMap" type="com.kh.springdb.model.Board">
+        <id property="boardId" column="board_id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="author" column="author"/>
+    </resultMap>
+
+    <select id="getAllBoards" resultMap="BoardResultMap">
+        SELECT * FROM Board
+    </select>
+
+    <select id="getBoardById" parameterType="int" resultMap="BoardResultMap">
+        SELECT * FROM Board WHERE board_id = #{boardId}
+    </select>
+
+    <insert id="insertBoard" parameterType="com.kh.springdb.model.Board">
+        INSERT INTO Board (board_id, title, content, author)
+        VALUES (#{boardId}, #{title}, #{content}, #{author})
+    </insert>
+
+    <update id="updateBoard" parameterType="com.kh.springdb.model.Board">
+        UPDATE Board
+        SET title = #{title}, content = #{content}, author = #{author}
+        WHERE board_id = #{boardId}
+    </update>
+
+    <delete id="deleteBoard" parameterType="int">
+        DELETE FROM Board WHERE board_id = #{boardId}
+    </delete>
+    
+    <delete id="deleteAllBoards">
+    	DELETE FROM Board
+    </delete>
+
+
+
+
+
+</mapper>
+<!-- 
+	CREATE TABLE Board (
+	    board_id NUMBER(10) PRIMARY KEY,
+	    title VARCHAR2(100),
+	    content VARCHAR2(200), 
+	    author VARCHAR2(50)
+	);
+-->
