@@ -39,4 +39,7 @@ public class BoardService {
 	public void deleteAllBoards() {
 		boardRepository.deleteAll();
 	}
+	public List<Board> findBoardsByTitle(String keyword) {
+        return boardRepository.findTitle(keyword);
+    }
 }

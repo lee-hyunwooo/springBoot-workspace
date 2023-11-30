@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="EUC-KR">
+		<title>Cafe List</title>
+	</head>
+	<body>
+		<h2>Cafe List</h2>
+		<a th:href="@{/cafes/new}">카페 추가하기</a>
+		<form th:action="@{/cafes}" method="get">
+			<label>Search Cafe:</label>
+			<input type="text" id="search" name="name"/>
+			<button type="submit">Search</button>
+		</form>
+		
+		<table border="1">
+			<tr th:each="cafe : ${cafes}"></tr>
+		</table>
+		
+		<table border="1">
+			<tr th:each="cafe : ${cafes}">
+				<td th:text="${cafe.cafeId}"></td>
+				<td th:text="${cafe.name}"></td>
+				<td th:text="${cafe.location}"></td>
+				<td th:text="${cafe.opningHours}"></td>
+				<td>
+					<a th:href="@{'/cafes/' + cafe.cafeId}">상세보기</a>
+					<a th:href="@{'/cafes/delete/' + cafe.cafeId">폐업</a>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

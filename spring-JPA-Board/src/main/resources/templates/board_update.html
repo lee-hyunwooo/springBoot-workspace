@@ -18,6 +18,7 @@
         <button type="submit">Save Board</button>
        
     </form>
-     <a th:href="@{/boards/details/{boardId}(boardId=${board.boardId})}">돌아가기</a>
+     <a th:href="@{/boards}">리스트로 돌아가기</a>
+     <a th:href="@{/boards/details/{boardId}(boardId=${board.boardId})}">상세보기로 돌아가기</a>
 </body>
 </html>

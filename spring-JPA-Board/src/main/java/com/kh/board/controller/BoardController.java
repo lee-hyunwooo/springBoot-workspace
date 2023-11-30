@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.board.service.BoardService;
 import com.kh.board.vo.Board;
@@ -76,4 +77,15 @@ public class BoardController {
 		boardService.deleteAllBoards();
 		return "redirect:/boards";
 	}
+	@GetMapping("/search")
+    public String searchBoards(@RequestParam String keyword, Model model) {
+        // 특정 키워드를 포함하는 게시물 검색
+        List<Board> boards = boardService.findBoardsByTitle(keyword);
+
+        // 모델에 검색 결과 추가
+        model.addAttribute("boards", boards);
+
+        // 검색 결과를 보여줄 뷰 페이지 리턴
+        return "searchResults";
+    }
 }

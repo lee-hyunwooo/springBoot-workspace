@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>검색 결과</title>
+</head>
+<body>
+	<h2>검색 결과</h2>
+	<table border = "1">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Title</th>
+				<th>Author</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- 검색 결과를 반복해서 표시 -->
+			<tr th:each="c : ${cafes}">
+				<td th:text="${c.cafesId}"></td>
+				<td th:text="${c.name}"></td>
+				<td th:text="${c.location}"></td>
+				<td th:text="${c.openingHours}"></td>
+			</tr>
+		</tbody>
+	</table>
+	 <a th:href="@{/cafes}">Back to Home</a>
+</body>
+</html>

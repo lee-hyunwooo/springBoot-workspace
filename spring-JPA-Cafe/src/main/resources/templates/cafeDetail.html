@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="EUC-KR">
+		<title>Cafe Details</title>
+	</head>
+	<body>
+		<h2>Cafe Details</h2>
+		<div th:if="${cafe != null}">
+			<p>ID</p>
+			<p th:text="${cafe.cafeId}"></p>
+			<p>NAME</p>
+			<p th:text="${cafe.name}"></p>
+			<p>Location</p>
+			<p th:text="${cafe.location}"></p>
+			<p>Opening Hours</p>
+			<p th:text="${cafe.openingHours}"></p>
+			<a th:href="@{/cafes}">Back to List</a>
+		</div>
+		<div th:unless="${cafe != null}">
+			
+			<p>카페를 찾을 수 없습니다.</p>
+			<a th:href="@{/cafes}">돌아가기</a>
+		</div>
+	</body>
+</html>
+
+<!-- -->
+th:if 의 반대로 th:unless를 사용
+	    th:if가 참이면 unless로 작성해준 태그는 보여지지 않으나
+	th:unless가 참이면 unless로 작성해준 태그가 보여짐
+
+
+
+
+
+
+
+
