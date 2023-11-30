@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Cafe Form</title>
 </head>
 <body>
 	<h2>Cafe Form</h2>
-	<form th:action="@{/cafes/new}" method="post" th:object="${cafe}">
+	<form th:action="@{/cafes/save}" method="post" th:object="${cafe}">
 		<label for="name">NAME : </label>
 		<input type="text" id="name" name="name" th:field="*{name}" required/>
 		<br/>

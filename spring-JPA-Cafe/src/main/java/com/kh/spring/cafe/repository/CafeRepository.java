@@ -18,7 +18,3 @@ public interface CafeRepository extends JpaRepository<Cafe, Long> {
 	
 	//2. 보여줄 것이 하나 => Cafe 객체 하나만 호출할 것
 }
-
-
-
-

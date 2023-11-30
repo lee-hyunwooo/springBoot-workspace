@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="EUC-KR">
+<title>검색결과</title>
+</head>
+<body>
+	<h2>검색결과</h2>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>NAME</th>
+				<th>LOCATION</th>
+				<th>OPENING_HOURS</th>
+			</tr>
+			
+		</thead>
+		<!-- 검색 결과를 모두 표시하는 공간을 만들어줌 -->
+		<tbody>
+			<tr th:each="cafe : ${cafes}">
+				<td th:text="${cafe.cafe_id}"></td>
+				<td th:text="${cafe.name}"></td>
+				<td th:text="${cafe.location}"></td>
+				<td th:text="${cafe.opening_hours}"></td>
+				
+			</tr>

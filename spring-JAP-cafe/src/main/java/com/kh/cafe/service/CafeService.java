@@ -1,4 +1,4 @@
-package com.kh.spring.cafe.service;
+package com.kh.cafe.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,34 +6,52 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.kh.spring.cafe.repository.CafeRepository;
-import com.kh.spring.cafe.vo.Cafe;
+import com.kh.cafe.repository.CafeRepository;
+import com.kh.cafe.vo.Cafe;
 
 @Service
 public class CafeService {
+
 	@Autowired
-	private CafeRepository cafeRepository;
+	private  CafeRepository cafeRepository;
 	
-	//전체검색
+	
+	
+	
+	// 카페 전체조회
 	public List<Cafe> getAllCafes(){
 		return cafeRepository.findAll();
 	}
-	//부분검색
-	public Optional<Cafe> getCafeById(Long id) {
+	
+	// 카페 상세 정보 
+	public Optional<Cafe> getCafeById(Long id){
 		return cafeRepository.findById(id);
 	}
-	//추가하기
+	
+	// 카페 추가
 	public Cafe saveCafe(Cafe cafe) {
 		return cafeRepository.save(cafe);
 	}
 	
-	//삭제하기
+	//카페 하나 삭제
 	public void deleteCafeById(Long id) {
 		cafeRepository.deleteById(id);
 	}
 	
-	public List<Cafe> findCafes(String keyword) {
-		//return cafeRepository.findCafe(keyword);
-		return cafeRepository.findByNameContaining(keyword);
+	//카페 전체 삭제
+	public void deleteAllCafes() {
+		cafeRepository.deleteAll();
 	}
+	
+	
+	
+	
+	public List<Cafe> findCafes(String keyword){
+		return cafeRepository.findByNameContaining(keyword);
+		
+	}
+	
+	
+
+	
 }

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>Cafe Detail</title>
+	</head>
+	<body>
+		<h2 th:text="${cafe.name}">Cafe Detail</h2>
+		<div th:if="${cafe != null}">
+			<p>ID</p>
+			<p th:text="${cafe.cafe_id}"></p>
+			<p>NAME</p>
+			<p th:text="${cafe.name}"></p>
+			<p>LOCATION</p>
+			<p th:text="${cafe.location}"></p>
+			<p>Opening_hours</p>
+			<p th:text="${cafe.Opening_hours}"></p>
+			<a th:href="@{cafes}">Back to List</a>
+		</div>
+		<div th:unless="${cafe != null}">
+			<p>카페를 찾을 수 없습니다.</p>
+			<a th:href="@{/cafes}">Bac to List</a>
+			
+			
+		</div>
+		
+	</body>
+</html>

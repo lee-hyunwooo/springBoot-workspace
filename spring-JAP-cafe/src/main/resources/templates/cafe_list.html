@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="EUC-KR">
+<title>카페 목록</title>
+<script th:inline="javascript">
+	function checkDelete(){
+		var checkdelete = confirm(" 모두 삭제하시겠습니까?");
+		if(checkdelete){
+			
+			window.location.href='cafes/delete/all';
+			
+		} else {
+			alert("삭제를 취소했습니다.");
+		}
+	}
+	</script>
+	
+</head>
+<body>
+	<h2>Cafe List</h2>
+	<a th:href="@{/cafes/new}">카페 추가하기</a>
+	<form th:action="@{/cafes}" method="get">
+		<label>Search Cafe:</label>
+		<input type="text" id="search" name="name"/>
+		<button type="submit">search</button>
+
+	</form>
+	
+	
+	<table border="1">
+		<tr th:each="cafe : ${cafes}">
+			
+		</tr>
+	</table>
+	
+
+	<table border="1">
+			<tr th:each="cafe : ${cafes}">
+				<td th:text="${cafe.cafe_id}"></td>
+				<td th:text="${cafe.name}"></td>
+				<td th:text="${cafe.location}"></td>
+				<td th:text="${cafe.opening_hours}"></td>
+				<td> <a th:href="@{/cafes/detail/{id}(id = ${cafe.cafe_id})}">상세보기</a></td>
+				<td> <a th:href="@{/cafes/update/{id}(id = ${cafe.cafe_id})}">수정하기</a></td>
+				<td> <a th:href="@{/cafes/delete/{id}(id = ${cafe.cafe_id})}">삭제하기</a></td>
+			</tr>
+		</tbody>
+	</table>
+	<!--<a th:href="@{/cafes/delete/all}">Delete All</a>-->
+	<a href="#" th:onclick="checkDelete()">Delete All</a>
+	
+
+</body>
+</html>

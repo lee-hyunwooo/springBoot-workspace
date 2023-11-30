@@ -17,9 +17,3 @@ public class Cafe {
 	private String location;
 	private String openingHours;
 }
-
-
-
-
-
-

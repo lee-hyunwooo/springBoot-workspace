@@ -15,7 +15,7 @@ import com.kh.spring.cafe.service.CafeService;
 import com.kh.spring.cafe.vo.Cafe;
 
 @Controller
-@RequestMapping
+@RequestMapping("/cafes")
 public class CafeController {
 	private final CafeService cafeService;
 	
@@ -24,7 +24,7 @@ public class CafeController {
 		this.cafeService = cafeService;
 	}
 	
-	@GetMapping()
+	@GetMapping
 	public String getAllCafes(Model model,@RequestParam(required=false) String name) {
 		
 		
@@ -89,8 +89,3 @@ public class CafeController {
 		//	@PathVariable : URL 경로에서 변수 값을 추출 url /cafes/{id}
 		//	@RequestParam : 한 경로 안에서 클라이언트가 요청한 파라미터 값을 추출
 							//url /cafes?name=사용자가 폼에 입력한 값
-
-
-
-
-

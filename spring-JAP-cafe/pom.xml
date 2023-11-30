@@ -8,25 +8,19 @@
 		<version>3.2.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.kh.spring.cafe</groupId>
-	<artifactId>spring-JPA-Cafe</artifactId>
+	<groupId>com.kh.cafe</groupId>
+	<artifactId>spring-JAP-cafe</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-JPA-Cafe</name>
-	<description>spring cafe open</description>
+	<name>spring-JAP-cafe</name>
+	<description>Board project for Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
-    <groupId>com.oracle.database.jdbc</groupId>
-    <artifactId>ojdbc11</artifactId>
-    <version>23.3.0.23.09</version> <!-- 적절한 버전 사용 -->
-</dependency>
-		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
-		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -45,6 +39,11 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.oracle.database.jdbc</groupId>
+			<artifactId>ojdbc8</artifactId>
+			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
