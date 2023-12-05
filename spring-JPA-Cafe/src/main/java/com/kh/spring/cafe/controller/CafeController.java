@@ -1,6 +1,7 @@
 package com.kh.spring.cafe.controller;
 import java.util.Optional;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -65,6 +66,11 @@ public class CafeController {
 	public String deleteCafe(@PathVariable Long cafeId) {
 		cafeService.deleteCafeById(cafeId);
 		return "redirect:/cafes";
+	}
+	@GetMapping("/search")
+	public String searchCafes(@RequestParam String keyword, Model model) {
+		List<Cafe> cafes = cafeService.findCafes(keyword);
+		return "searchResults";
 	}
 	/*
 	@GetMapping("/search")
