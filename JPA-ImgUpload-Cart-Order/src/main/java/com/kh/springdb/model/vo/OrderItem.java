@@ -2,7 +2,6 @@ package com.kh.springdb.model.vo;
 
 import jakarta.persistence.*;
 import lombok.*;
-
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -10,70 +9,57 @@ import lombok.*;
 @Setter
 @Entity
 public class OrderItem {
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator="orderItem_seq")
-	@SequenceGenerator(name = "orderItem_seq", sequenceName = "orderItem_seq", allocationSize = 1)
-	private int id;
-	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="order_id")
-	private Order order;
-	
-	//구매자
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="user_id")
-	private User user;
-	
-	//상품 주문번호
-	private int itemId;
-	
-	//주문 상품이름
-	private String itemName;
-	
-	//주문 상품 가격
-	private int itemPrice;
-	
-	//주문 상품 수량
-	private int itemCount;
-	
-	//가격 * 수량 = 총 가격
-	private int itemTotalPrice;
-	
-	//주문 상품에 매핑되는 판매상품
-	@OneToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="saleItem_id")
-	private SaleItem saleItem;
-	
-	//주문 취소 여부 1:주문취소 0:주문완료
-	private int isCancel;
-	
-	
-	//장바구니 상품 하나씩 개별 주문
-	public static OrderItem createOrderItem(int itemId, User user, Item item, int count, Order order, SaleItem saleItem) {
-		OrderItem orderItem = new OrderItem();
-		orderItem.setItemId(itemId);
-		orderItem.setUser(user);
-		orderItem.setOrder(order);
-		orderItem.setItemName(item.getName());
-		orderItem.setItemPrice(item.getPrice());
-		//어떤 제품을 몇개 살 것이고 최종적으로 몇개를 구매할 것인지에 대한 카운트가 필요함
-		orderItem.setItemCount(count);
-		orderItem.setItemTotalPrice(item.getPrice() * count);
-		orderItem.setSaleItem(saleItem);
-		return orderItem;
-	}
-	
-	//장바구니 전체 주문
-	public static OrderItem createOrderItem(int itemId, User user, CartItem cartItem, SaleItem saleItem) {
-		OrderItem orderItem = new OrderItem();
-		orderItem.setItemId(itemId);
-		orderItem.setUser(user);
-		orderItem.setItemName(cartItem.getItem().getName());
-		orderItem.setItemPrice(cartItem.getItem().getPrice());
-		orderItem.setItemCount(cartItem.getCartCount());
-		orderItem.setItemTotalPrice(cartItem.getItem().getPrice()*cartItem.getCartCount());
-		orderItem.setSaleItem(saleItem);
-		return orderItem;
-	}
-	
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="orderItem_seq")
+	@SequenceGenerator(name = "orderItem_seq", sequenceName="orderItem_seq",allocationSize=1)
+    private int id;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="order_id")
+    private Order order;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User user; // 구매자
+
+    private int itemId; // 주문 상품 번호
+    private String itemName; // 주문 상품 이름
+    private int itemPrice; // 주문 상품 가격
+    private int itemCount; // 주문 상품 수량
+    private int itemTotalPrice; // 가격*수량
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="saleItem_id")
+    private SaleItem saleItem; // 주문상품에 매핑되는 판매상품
+
+    private int isCancel; // 주문 취소 여부 (0:주문완료 / 1:주문취소)
+
+    // 장바구니 전체 주문
+    public static OrderItem createOrderItem(int itemId, User user, CartItem cartItem, SaleItem saleItem) {
+        OrderItem orderItem = new OrderItem();
+        orderItem.setItemId(itemId);
+        orderItem.setUser(user);
+        orderItem.setItemName(cartItem.getItem().getName());
+        orderItem.setItemPrice(cartItem.getItem().getPrice());
+        orderItem.setItemCount(cartItem.getCount());
+        orderItem.setItemTotalPrice(cartItem.getItem().getPrice()*cartItem.getCount());
+        orderItem.setSaleItem(saleItem);
+        return orderItem;
+    }
+
+    // 상품 개별 주문
+    public static OrderItem createOrderItem(int itemId, User user, Item item, int count, Order order, SaleItem saleItem) {
+        OrderItem orderItem = new OrderItem();
+        orderItem.setItemId(itemId);
+        orderItem.setUser(user);
+        orderItem.setOrder(order);
+        orderItem.setItemName(item.getName());
+        orderItem.setItemPrice(item.getPrice());
+        orderItem.setItemCount(count);
+        orderItem.setItemTotalPrice(item.getPrice()*count);
+        orderItem.setSaleItem(saleItem);
+        return orderItem;
+    }
+
 }

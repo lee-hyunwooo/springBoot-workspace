@@ -66,6 +66,7 @@ public class BoardController {
 		boardService.saveBoard(board);
 		return "redirect:/boards";
 	}
+	
 	@GetMapping("/delete/{boardId}")
 	public String deleteboard(@PathVariable Long boardId) {
 		boardService.deleteBoardById(boardId);
